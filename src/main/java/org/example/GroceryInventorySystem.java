@@ -6,9 +6,9 @@ public class GroceryInventorySystem {
     public static void main(String[] args) {
         InventoryManager manager = new InventoryManager();
         Scanner scanner = new Scanner(System.in);
-        boolean running = true;
+        boolean runMenu = true;
 
-        while (running) {
+        while (runMenu) {
             System.out.println("---Grocery Store Inventory---");
             System.out.println("1. Add Product");
             System.out.println("2. Check Product");
@@ -37,7 +37,7 @@ public class GroceryInventorySystem {
                 case 3 -> {
                     System.out.print("Enter product name: ");
                     String name = scanner.nextLine();
-                    System.out.print("Enter quantity change (+ restock, - sold): ");
+                    System.out.print("Enter new quantity:");
                     int change = scanner.nextInt();
                     manager.updateProduct(name, change);
                 }
@@ -48,7 +48,7 @@ public class GroceryInventorySystem {
                 }
                 case 5 -> manager.viewInventory();
                 case 6 -> {
-                    running = false;
+                    runMenu = false;
                     System.out.println("Exiting program...");
                 }
                 default -> System.out.println("Invalid choice. Please try again.");

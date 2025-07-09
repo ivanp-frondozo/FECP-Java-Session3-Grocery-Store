@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class InventoryManager {
     private Map<String, Integer> groceryInventory;
@@ -11,9 +10,19 @@ public class InventoryManager {
     }
 
     public void addProduct(String name, int quantity) {
-        groceryInventory.put(name.toLowerCase(), quantity);
-        System.out.println("Added: " + name + " - Quantity: " + quantity);
+        if ( quantity == 0){
+            System.out.println("Please enter a positive number.");
+        }
+        else {
+            groceryInventory.put(name.toLowerCase(), quantity);
+            System.out.println("Added: " + name + " - Quantity: " + quantity);
+        }
     }
+
+    public int getQuantity(String name) { //currently only used for testing addProduct method quantity
+        return groceryInventory.getOrDefault(name.toLowerCase(), -1);
+    }
+
 
     public boolean checkProduct(String name) {
         String key = name.toLowerCase();
